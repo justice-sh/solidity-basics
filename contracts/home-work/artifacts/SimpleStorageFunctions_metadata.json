@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getValue",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"home-work/simple-storage-functions.sol": "SimpleStorageFunctions"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"home-work/simple-storage-functions.sol": {
+			"keccak256": "0xffba99d283697099237975f4c78aee75ceca4f542f16c441135b109d4eba97c3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8a95307fdd7f3d104b7ad9d04610bced07b4c4523aa7b7873931a5668756bff3",
+				"dweb:/ipfs/QmP8We5CbeL1p91tfv52YtB4yLimM5yVeC6qJLD7eybzxS"
+			]
+		}
+	},
+	"version": 1
+}
