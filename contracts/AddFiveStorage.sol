@@ -3,11 +3,9 @@ pragma solidity ^0.8.24;
 
 import {SimpleStorage} from "./SimpleStorage.sol";
 
-contract AddFiveStorage is SimpleStorage {
-
-    
-      function store(uint256 _favoriteNumber) public override  {
-        favoriteNumber = _favoriteNumber + 5;
-    }
+contract AddFiveStorage is SimpleStorage { 
+  function store(uint256 _favoriteNumber) public override  {
+    favoriteNumber = _favoriteNumber + 5;
+  }
 
 }
