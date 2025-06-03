@@ -1,38 +1,15 @@
 {
+  "plugins": ["prettier-plugin-solidity"],
+  "tabWidth": 2,
+  "useTabs": false,
+  "singleQuote": false,
+  "printWidth": 100,
   "overrides": [
     {
       "files": "*.sol",
       "options": {
-        "printWidth": 100,
-        "tabWidth": 2,
-        "useTabs": false,
-        "singleQuote": false,
-        "bracketSpacing": false
+        "parser": "slang"
       }
-    },
-    {
-      "files": "*.yml",
-      "options": {}
-    },
-    {
-      "files": "*.yaml",
-      "options": {}
-    },
-    {
-      "files": "*.toml",
-      "options": {}
-    },
-    {
-      "files": "*.json",
-      "options": {}
-    },
-    {
-      "files": "*.js",
-      "options": {}
-    },
-    {
-      "files": "*.ts",
-      "options": {}
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "name": "web3-sc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "remixd": "node ./@remix-project/remixd/src/bin/remixd.js -s . --remix-ide https://remix.ethereum.org",
+    "prettier": "prettier --write --plugin=prettier-plugin-solidity '*.sol'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remix-project/remixd": "^0.6.48"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-solidity": "^2.0.0"
+  }
+}
