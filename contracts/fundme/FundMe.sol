@@ -19,4 +19,11 @@ contract FundMe {
     addressToAmountFunded[msg.sender] += msg.value;
     contributionCount[msg.sender] += 1;
   }
+
+  function withdraw() public {
+    for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
+      address funder = funders[funderIndex];
+      addressToAmountFunded[funder] = 0; // Reset the funding amount for each funder
+    }
+  }
 }
