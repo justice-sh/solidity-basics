@@ -26,9 +26,7 @@ contract FundMe {
     contributionCount[msg.sender] += 1;
   }
 
-  function withdraw() public {
-    require(msg.sender == owner, "Only the owner can withdraw funds");
-
+  function withdraw() public onlyOwner {
     for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
       address funder = funders[funderIndex];
       addressToAmountFunded[funder] = 0; // Reset the funding amount for each funder
@@ -46,5 +44,10 @@ contract FundMe {
     // (bool callSuccess, bytes memory dataReturned) = payable(msg.sender).call{value: this(address).balance}("");
     (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}("");
     require(callSuccess, "Call failed");
+  }
+
+  modifier onlyOwner() {
+    require(msg.sender == owner, "Only the owner can call this function");
+    _;
   }
 }
