@@ -3,24 +3,32 @@ pragma solidity ^0.8.24;
 
 import {PriceConverter} from "./PriceConverter.sol";
 
+error NotOwner();
+error NotEnoughEth(uint256 sent, uint256 minimum);
+
+// gas 817423 , tx cost 710802, ex cost 613868
+// , tx 690459
+// , tx 667288
+// , tx 634955
 contract FundMe {
   using PriceConverter for uint256;
 
   // uint256 public MINIMUM_USD = 50 * 10**18; // 50 USD in wei
-  uint256 public MINIMUM_USD = 5e18;
+  uint256 public constant MINIMUM_USD = 5;
 
   address[] public funders; // Array to store funders
   mapping(address => uint256) public addressToAmountFunded; // Mapping to track how much each address has funded
   mapping(address => uint256) public contributionCount;
 
-  address public owner;
+  address public immutable i_owner;
 
   constructor() {
-    owner = msg.sender;
+    i_owner = msg.sender;
   }
 
   function fund() public payable {
-    require(msg.value.convertEthToUsd() >= MINIMUM_USD, "You need to spend more ETH!");
+    if (msg.value < MINIMUM_USD.convertUsdToEth()) revert NotEnoughEth(msg.value, MINIMUM_USD.convertUsdToEth());
+
     funders.push(msg.sender);
     addressToAmountFunded[msg.sender] += msg.value;
     contributionCount[msg.sender] += 1;
@@ -47,7 +55,17 @@ contract FundMe {
   }
 
   modifier onlyOwner() {
-    require(msg.sender == owner, "Only the owner can call this function");
+    if (msg.sender != i_owner) {
+      revert NotOwner();
+    }
     _;
+  }
+
+  receive() external payable {
+    fund();
+  }
+
+  fallback() external payable {
+    fund();
   }
 }

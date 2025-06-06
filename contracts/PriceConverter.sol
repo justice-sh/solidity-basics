@@ -10,9 +10,7 @@ library PriceConverter {
    * @return The equivalent amount in USD.
    */
   function convertEthToUsd(uint256 ethAmount) internal pure returns (uint256) {
-    uint256 ethUsdPrice = getMockPrice(); // Latest ETH/USD price in wei
-    uint256 ethAmountInUSD = (ethUsdPrice * ethAmount) / 1e18; // Convert ETH to USD
-    return ethAmountInUSD;
+    return (getMockPrice() * ethAmount) / 1e18; // Convert ETH to USD in Wei
   }
 
   /**
@@ -27,16 +25,17 @@ library PriceConverter {
     return uint256(answer * 1e10); // Convert price to wei
   }
 
+  /**
+   * @notice Gets a mock ETH price in USD for testing purposes.
+   * @return The mock ETH price in USD with 18 decimals (or mock ETH/USD price in wei).
+   */
   function getMockPrice() internal pure returns (uint256) {
-    uint256 answer = 2624e18;
-    return answer;
+    return 2462e18; // This implies that 1 USD === 2462 ETH
   }
 
   // Assignment: Convert USD to ETH
   // This function converts a given USD amount to ETH based on the current price feed
   function convertUsdToEth(uint256 usdAmount) public pure returns (uint256) {
-    uint256 ethUsdPrice = getMockPrice(); // Latest ETH price in wei
-    uint256 usdAmountInWei = (usdAmount * 1e18) / ethUsdPrice; // Convert USD to ETH
-    return usdAmountInWei;
+    return (usdAmount * 1e18 * 1e18) / getMockPrice(); // Convert USD to ETH in wei
   }
 }
